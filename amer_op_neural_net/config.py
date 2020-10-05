@@ -61,6 +61,13 @@ X0 = np.array([[x0] * d], dtype=np_floattype)
 T = 2.0
 N = 10
 
+## jump parameters
+jump_rate = 0.1
+jump_vol = 0.4
+jump_mean = -0.9
+kappa = np.exp(0.5*jump_vol*jump_vol + jump_mean) - 1
+drift = mu - sigma*sigma/2.0 - jump_rate * kappa
+
 ###############################################
 directory = "Results/option=" + option_type[0] + "&" + option_type[1] + "&" + option_type[2] + "_d=" + str(
     d) + "_X0=" + str(x0).replace(".", "p") + "_N=" + str(N) + "_seed=" + str(global_seed) + "/"
