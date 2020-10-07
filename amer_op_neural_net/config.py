@@ -62,7 +62,7 @@ T = 2.0
 N = 10
 
 ## jump parameters
-jump_rate = 0.7
+jump_rate = 0.5
 jump_vol = 0.4
 jump_mean = -0.9
 kappa = np.exp(0.5*jump_vol*jump_vol + jump_mean) - 1
