@@ -96,7 +96,7 @@ class AmericanOption:
         
         # Xnp1 = Xn + mu * Xn * dt + dAn + dJn
     
-        Xnp1 = np.exp(mu * dt) * Xn + dAn + dJn
+        Xnp1 = np.exp(mu * dt) * Xn + dAn 
         Xnp1 = np.maximum(Xnp1, 1e-6)
         return Xnp1
 
