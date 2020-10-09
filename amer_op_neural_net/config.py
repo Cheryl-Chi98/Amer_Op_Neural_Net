@@ -47,7 +47,7 @@ session_config = tf.ConfigProto(device_count={"CPU": num_cpus},
 ###############################################
 
 option_type = ['call', 'geometric', 'vanilla']
-d = 7
+d = 1
 r = 0
 qq = np.array([[0.02] * d], dtype=np_floattype)
 mu = r - qq
@@ -62,7 +62,7 @@ T = 2.0
 N = 10
 
 ## jump parameters
-jump_rate = 0.3
+jump_rate = 0
 jump_vol = 0.4
 jump_mean = -0.9
 kappa = np.exp(0.5*jump_vol*jump_vol + jump_mean) - 1
