@@ -89,7 +89,7 @@ class AmericanOption:
         dAn = sigma * Xn * dWn
 
         # jump 
-        jump_check = np.random.randn(self.sample_size, d).astype(np_floattype)
+        jump_check = np.random.rand(self.sample_size, d).astype(np_floattype)
         jump_mask = (jump_check <= jump_rate * dt) * 1
         jump_size = jump_mean + jump_vol * np.random.randn(self.sample_size, d) 
         dJn = (jump_size * jump_mask - 1) * Xn
