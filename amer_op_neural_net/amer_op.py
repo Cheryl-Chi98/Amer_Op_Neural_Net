@@ -86,17 +86,17 @@ class AmericanOption:
 
     def __evolution_state_timestep(self, Xn):
         dWn = (np.random.randn(self.sample_size, d).dot(rhoL) * math.sqrt(dt)).astype(np_floattype)
-        dAn = sigma * Xn * dWn
+        # dAn = sigma * Xn * dWn
 
         # jump 
         jump_check = np.random.rand(self.sample_size, d).astype(np_floattype)
         jump_mask = (jump_check <= jump_rate * dt) * 1
         jump_size = jump_mean + jump_vol * np.random.randn(self.sample_size, d) 
-        dJn = (jump_size * jump_mask - 1) * Xn
+        dJn = np.exp(jump_size * jump_mask)
         
         # Xnp1 = Xn + mu * Xn * dt + dAn + dJn
     
-        Xnp1 = np.exp(mu * dt) * Xn + dAn + dJn
+        Xnp1 = Xn * (np.exp(drift * dt + sigma * dWn)) * dJn
         Xnp1 = np.maximum(Xnp1, 1e-6)
         return Xnp1
 
